@@ -52,30 +52,6 @@ jupyter notebook notebook.ipynb
 
 
 
-## Key Areas
-- Data collection and cleaning
-- Exploratory data analysis (EDA)
-- Statistical analysis
-- Data visualization
-- Market insights and recommendations
-
-## Tools & Technologies
-- Python
-- Pandas, NumPy
-- Matplotlib, Seaborn
-- Jupyter Notebooks
-
-## Project Structure
-```
-DS-01-Mexican-Real-Estate-Market/
-├── README.md
-├── data/
-├── notebooks/
-├── scripts/
-└── results/
-```
-
-
 ## Author
 spheleleamandla-wq
 
