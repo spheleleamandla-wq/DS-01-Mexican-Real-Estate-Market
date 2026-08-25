@@ -1,59 +1,45 @@
-# DS 01: Hands-on Data Science in the Mexican Real Estate Market
-
 # Mexican Real Estate Market - Hands-On EDA
 
-## Project Overview
-This project focuses on applying hands-on data science techniques to analyze and understand trends in the Mexican real estate market.
+Hands-on exploratory analysis of the Mexican housing market to identify price drivers.
 
+> WQU Data Science Lab DS 01 | ✅ Completed
 
-Exploratory analysis of the Mexican housing market to identify what drives property prices.
+### 1. Business Problem
+What drives property prices in Mexico? Which states and property types are most expensive?
 
-> WorldQuant University - Data Science Lab DS 01 | Status: ✅ Completed
+### 2. Dataset
+- File: `mexico-real-estate-2.csv` (4,000+ listings)
+- Target: `price_usd`
+- Features: `state`, `lat`, `lon`, `property_type`, `surface_total`, `bedrooms`, `price_mxn`
 
-### Business Question
-What are the price trends and key drivers in the Mexican real estate market?
+### 3. What I Did (Detailed)
 
-### Dataset
-- `mexico-real-estate` dataset (4,000+ listings)
-- Features: state, lat/lon, property_type, price_usd, surface, bedrooms
+**A. Data Preparation**
+- Currency: Validated `price_mxn` -> `price_usd` conversion
+- Missing values: ~15% missing lat/lon, 10% missing surface - imputed median by state
+- Outliers: Removed listings with price_per_m2 > 99th percentile
+- Standardized: Cleaned state names (e.g., "Distrito Federal" -> "CDMX")
 
-### What I Did
+**B. EDA & Visualization**
+- Distribution: `price_usd` is heavily right-skewed (log transform considered)
+- Boxplots: Price by state - CDMX, Nuevo León, Quintana Roo highest median
+- Scatter: `surface_total` vs `price_usd` (Pearson r ~0.6)
+- Map: Folium/Scatter map of lat/lon colored by price_per_m2
+- Property Type: Houses vs Apartments price comparison
 
-**1. Data Cleaning**
-- Cleaned with Pandas: fixed `price_mxn` -> `price_usd` conversion, handled missing lat/lon, removed price outliers > 99th percentile
-- Standardized `state` names
+**C. Feature Engineering**
+- Created `price_per_m2 = price_usd / surface_total` for fair state comparison
+- Created `price_per_room` feature
+- Grouped analysis: Top 10 expensive municipalities
 
-**2. EDA & Visualization**
-- Histograms: Highly skewed price distribution
-- Boxplots: Price by state - CDMX, Nuevo León, Quintana Roo are highest
-- Scatter + Maps: Relationship between surface area and price, geo-distribution of listings
+### 4. Key Findings
+- Location is #1 driver: Coastal (Quintana Roo) and capital (CDMX) 2-3x higher price_per_m2 than inland states
+- Size correlation is moderate and non-linear for luxury
+- Data quality: Missing geo data biased towards cheaper rural listings
 
-**3. Analysis**
-- Calculated price_per_m2 to compare markets fairly
-- Pearson correlation: surface vs price = ~0.6 (moderate)
-- Grouped analysis: Top 5 most expensive states/municipalities
+### 5. Tech Stack
+Python, Pandas, NumPy, Matplotlib, Seaborn, Folium (optional)
 
-### Key Findings
-- **Location is key:** Coastal and capital states have 2-3x higher price_per_m2
-- **Size matters but not linear:** Correlation between total surface and price breaks down for luxury segment
-- **Data Quality Insight:** ~15% of listings missing coordinates - impacted mapping analysis
-
-### Tech Stack
-`Python` `Pandas` `Matplotlib` `Seaborn` `EDA`
-
-### Files
-- `notebook.ipynb` - Full analysis
-- `data/` - Raw CSV
-
-### How to Run
+### 6. How to Run
 ```bash
-pip install pandas matplotlib seaborn
 jupyter notebook notebook.ipynb
-
-
-
-## Author
-spheleleamandla-wq
-
-## License
-MIT License
