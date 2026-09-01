@@ -2,7 +2,7 @@
 
 Hands-on exploratory analysis of the Mexican housing market to identify price drivers.
 
-> WQU Data Science Lab DS 01 | ✅ Completed
+> WQU Data Science Lab DS 01 | Completed
 
 ### 1. Business Problem
 What drives property prices in Mexico? Which states and property types are most expensive?
